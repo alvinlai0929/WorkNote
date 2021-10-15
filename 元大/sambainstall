@@ -1,0 +1,19 @@
+AIX _samba.zip
+
+cups AIX-6.1：以這個為主
+http://www.bullfreeware.com/pkg?id=5899
+
+
+
+The following errors occurred during installation:
+error: Failed dependencies:
+        libgcc <= 9.1.0 conflicts with libgcc8-8.5.0-2.ppc
+        libstdc++ = 8.1.0-2 is needed by (installed) libstdc++-devel-8.1.0-2.ppc
+
+
+
+
+
+下載 套件：
+http://www.bullfreeware.com/?searching=true&package=libc&from=&to=&libraries=true&exact=false&version=5
+
