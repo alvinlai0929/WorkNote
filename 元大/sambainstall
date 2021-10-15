@@ -52,7 +52,20 @@ rpm.rte.4.13.0.11
 yum_bundle_v5.tar
 
 
-rpm -ivh yum-3.4.3-7.aix6.1.noarch.rpm python-urlgrabber-3.10.1-1.aix6.1.noarch.rpm python-2.7.10-1.aix6.1.ppc.rpm python-iniparse-0.4-1.aix6.1.noarch.rpm curl-7.52.1-1.aix6.1.ppc.rpm pysqlite-1.1.7-2.aix6.1.ppc.rpm yum-metadata-parser-1.1.4-2.aix6.1.ppc.rpm  python-pycurl-7.19.3-1.aix6.1.ppc.rpm gdbm-1.8.3-5.aix5.2.ppc.rpm ca-certificates-2016.10.7-2.aix6.1.ppc.rpm sqlite-3.15.2-1.aix6.1.ppc.rpm glib2-2.14.6-2.aix5.2.ppc.rpm readline-6.1-2.aix6.1.ppc.rpm gettext-0.19.7-1.aix6.1.ppc.rpm
+rpm -ivh yum-3.4.3-7.aix6.1.noarch.rpm \
+ python-urlgrabber-3.10.1-1.aix6.1.noarch.rpm \
+ python-2.7.10-1.aix6.1.ppc.rpm \
+ python-iniparse-0.4-1.aix6.1.noarch.rpm \
+ curl-7.52.1-1.aix6.1.ppc.rpm \
+ pysqlite-1.1.7-2.aix6.1.ppc.rpm \
+ yum-metadata-parser-1.1.4-2.aix6.1.ppc.rpm \
+ python-pycurl-7.19.3-1.aix6.1.ppc.rpm \
+ gdbm-1.8.3-5.aix5.2.ppc.rpm \
+ ca-certificates-2016.10.7-2.aix6.1.ppc.rpm \
+ sqlite-3.15.2-1.aix6.1.ppc.rpm \
+ glib2-2.14.6-2.aix5.2.ppc.rpm \
+ readline-6.1-2.aix6.1.ppc.rpm \
+ gettext-0.19.7-1.aix6.1.ppc.rpm
 
 
 yum install yum-plugin-downloadonly
