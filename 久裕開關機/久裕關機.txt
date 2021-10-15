@@ -1,0 +1,58 @@
+VPN
+
+125.227.149.175
+10443
+
+帳號：
+zxcvb
+
+密碼：
+05071926
+
+
+#192.168.0.91    arich01_boot
+#192.168.0.90     arich01 arich01.arich.com.tw 用這一個 遠端
+關機
+
+smitty hacmp 
+
+brining the resource offline
+
+shutdown -F
+
+
+#192.168.0.92    arich02_boot
+關機
+cd /etc/hacmp
+./stop_TEST.sh
+
+開機
+./start_TEST.sh
+
+
+
+
+＃HMC 192.168.0.193 無法開啟瀏覽器
+ssh hscroot@192.168.0.193
+abc123
+vtmenu
+確認所有lpar 已關閉
+
+ chsysstate -r lpar -m P520-9131-52A-SN06E2FFG -o on -n ha_standby
+
+#關機
+hmcshutdown -t now
+
+＃V7000 192.168.0.194
+https://192.168.0.194
+superuser
+passw0rd
+UI 網頁左上角 動作 關閉系統電源
+
+2021/07/03 14:12全部關機完畢
+
+
+lssyscfg -r sys -F name,state
+
+chsysstate -m P520-9131-52A-SN06E2FFG -r sys -o on
+
