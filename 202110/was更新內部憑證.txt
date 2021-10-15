@@ -1,0 +1,15 @@
+#登入wsadmin
+
+./wsadmin.sh -connType soap -lang jython -user wasadmin -password wasadmin
+
+#假設過期之KeyStore  NodeDefaultKeyStore    憑證為 default
+
+AdminTask.renewCertificate(['-keyStoreName', 'NodeDefaultKeyStore', '-certificateAlias', 'default'])
+
+
+#結果
+'\r\nCWPKI0704I: The personal certificate with the default alias in the NodeDefaultKeyStore keystore has been RENEWED.'
+
+
+AdminTask.renewCertificate('-interactive')
+
