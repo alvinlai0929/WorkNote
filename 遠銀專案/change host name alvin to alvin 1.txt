@@ -1,0 +1,138 @@
+wsadmin.bat -lang jython -username wasadmin -password wasadmin
+
+wsadmin.bat -connType SOAP -port 8879 -username wasadmin -password wasadmin
+
+wsadmin.bat -connType SOAP -port 8880 -username wasadmin -password wasadmin
+
+a = AdminConfig.list('ServerIndex')
+print a
+
+c=(cells/alvinCell01/nodes/alvinCellManager01|serverindex.xml#ServerIndex_1)
+d=(cells/alvinCell01/nodes/alvinNode01|serverindex.xml#ServerIndex_1)
+
+AdminConfig.modify('(cells/alvinCell01/nodes/alvinNode01|serverindex.xml#ServerIndex_1)',  "[[hostName alvin]]")
+
+AdminConfig.modify('(cells/alvinCell01/nodes/alvinCellManager01|serverindex.xml#ServerIndex_1)',  "[[hostName alvin]]")
+
+AdminConfig.show('(cells/alvinCell01/nodes/alvinNode01|serverindex.xml#ServerIndex_1)', 'hostName')
+
+AdminConfig.show('(cells/alvinCell01/nodes/alvinCellManager01|serverindex.xml#ServerIndex_1)', 'hostName')
+
+AdminConfig.save()
+
+
+
+
+# a.停止節點代理。
+
+stopNode.bat -profileName Node1 -username wasadmin -password wasadmin
+
+
+
+
+
+# b.停止應用程式伺服器
+
+stopServer server1 -profileName Node1 -username wasadmin -password wasadmin
+
+#c.在每個節點的 /bin 底下 下:syncNode
+
+syncNode <DMGR_HOST> <SOAP_PORT>
+syncNode.bat alvin 8879 -username wasadmin -password wasadmin
+
+#重新啟動Node
+
+startNode -profileName Node1
+
+
+
+#如果您更改了 部署管理員 的主機名稱，請重新啟動 部署管理員 以應用更改。
+
+＃移除Node~
+
+
+
+#a.停止部署管理員（從部署經理/bin 目錄中）。
+
+stopManager.bat -username wasadmin -password wasadmin
+
+#b.啟動部署管理員。
+
+startManager.bat
+
+
+
+做完把 etc/hosts 舊的  ＩＰ hostname 拿掉 登出系統 
+
+起Dmgr  
+
+startManager.bat
+
+startServer
+
+加回Node
+addNode alvin1 8879 -conntype soap -profileName Node1 
+
+作 syncNode
+syncNode.bat alvin1 8879 -username wasadmin -password wasadmin
+
+起Node  起不來
+
+startNode -profileName Node1
+
+#20210711
+
+https://help.hcltechsw.com/commerce/7.0.0/com.ibm.commerce.admin.doc/tasks/tcl_dmgr.html
+
+cd "D:\Program Files\IBM\WebSphere\AppServer\bin"
+
+＃做Dmgr設定
+
+wsadmin.bat -c "$AdminTask changeHostName {-nodeName Dmgr -hostName alvin}" -conntype NONE 
+wsadmin.bat -c "AdminConfig.save( )"
+
+startManager
+
+起不來
+
+
+1.改hostName 
+    改為 alvin 
+    重新開機
+
+2.測試Dmgr Node是否可啟動？
+    無法啟動，在etc/hosts  新增 ip 舊hostName       172.20.10.3 alvin1
+    新增完之後啟動 Dmgr Node1
+3.作Dmgr 的變更
+cd "D:\Program Files\IBM\WebSphere\AppServer\bin"
+
+wsadmin.bat -c "AdminConfig.show('(cells/alvin1Cell01/nodes/alvin1Node01|serverindex.xml#ServerIndex_1)', 'hostName')" -conntype NONE 
+wsadmin.bat -c "AdminConfig.save( )" 
+#################################################################
+    AdminTask.changeHostName ('[-interactive]')
+    AdminConfig.save() 
+
+把Hosts 注解掉 ＃172.20.10.3 alvin1
+
+重新開機
+
+試起Dmgr 無法啟動
+確認狀態
+   cd "D:\Program Files\IBM\WebSphere\AppServer\profiles\Dmgr\bin"
+
+   
+
+
+
+
+To Change the Hostname should run under Dmgr and Each node.
+
+1.AdminTask changeHostName {-nodeName node_name -hostName new_host_name}”
+
+2.AdminConfig.save( )
+
+This changes all the references in all xml files in the config directory.
+
+One note, though: if you’re changing an ND environment, you need to run the renameCell on both the Deployment Manager and nodeagent instances, then start the Deployment Manager. Once it’s running, run syncNode before starting the nodeagent.
+
+Note: Dont forget to change the Cell name and hostname entry in setupcmdline.sh under Dmgr/bin and AppServer/bin

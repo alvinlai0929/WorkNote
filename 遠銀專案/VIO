@@ -1,0 +1,49 @@
+https://www.ibm.com/support/pages/using-and-taking-advantage-usb-devices-and-aix
+將 ISO 檔燒錄到 隨身碟
+https://login.ibm.com/authsvc/mtfim/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:basicldapuser&Target=https%3A%2F%2Flogin.ibm.com%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3FqsId%3Dff01d171-4352-4632-ae13-7682c51f355c%26client_id%3DODE4NDc4NjMtZjkzNy00
+
+
+https://www-356.ibm.com/partnerworld/partnertools/eorderweb/ordersw.do
+
+
+#把目前設定存檔
+mksyscfg -r prof -m PTeamLAB_4F_8284-22A-SN689CCFW -o save -p vios -n `lssyscfg -r lpar -m PTeamLAB_4F_8284-22A-SN689CCFW  --filter "lpar_names=vios" -F curr_profile` --force  
+
+
+1.燒錄好VIO 3.1.2.1  flash版本
+2. 建立vio Lpar
+3.插入usb隨身碟
+4.開啟vio lpa 
+5.安裝 到第一顆硬碟  ，
+6.輸入 padmin  password
+7. license -accept
+8.mirroring vio server rootvg:
+  a. extendvg -f rootvg hdisk2        <--if pp limitation problem: chvg -factor 6 rootvg, then extendvg
+  b. mirrorios -defer hdisk2          <--mirror rootvg to hdisk2;  -defer is used, as no need to reboot since VIOS 1.5 :)
+                                    (use the -f only if required, which will do a reboot without prompting you to continue)
+  c . bootlist -mode normal -ls        <--checking bootlist
+       看是否兩個都在開機順序內
+9.oem_setup_env
+10. 退出後 試用  r o   是否可進入 oem_setup_env
+
+11.config ntp
+
+#將 ntp 加入 server xxx.xxx.xxx.xxx
+vi /home/padmin/config/ntp.conf
+#將 ntp 加入 server xxx.xxx.xxx.xxx
+
+#啟動
+startnetsvc xntpd
+
+#看log
+cat /home/padmin/config/ntp.
+
+#手動改時間 月日時分年
+chdate 1206093607 
+
+#改後再看一下 
+cat /home/padmin/config/ntp.log
+
+ps -ef | grep ntp
+
+

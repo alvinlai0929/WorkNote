@@ -1,0 +1,29 @@
+Hardware Management Console (HMC) machine code
+
+If the system is ordered with 950 Firmware level or higher and is capable to be HMC managed, then, the managing HMC (7063-CR1) must be installed with 9.2.950 or higher.
+
+This level only supports hardware appliance types 7063, or virtual appliances (vHMC) on x86 or PowerVM. The 7042 hardware appliance is not supported.
+
+An HMC is required to manage the Power S922 server implementing partitioning. Multiple POWER7, POWER8, and POWER9 processor-based servers can be supported by a single HMC.
+
+Planned HMC hardware and software support:
+
+X86 based - 7042-CR7, 7042-CR8, 7042-CR9
+vHMC x86
+POWER8 based Open Power: 7063-CR1
+vHMC PowerVM based LPAR
+If you are attaching an HMC to a new server or adding function to an existing server that requires a firmware update, the HMC machine code may need to be updated because HMC code must always be equal to or higher than the managed server's firmware. Access to firmware and machine code updates is conditioned on entitlement and license validation in accordance with IBM policy and practice. IBM may verify entitlement through customer number, serial number, electronic restrictions, or any other means or methods employed by IBM at its discretion.
+
+To determine the HMC machine code level required for the firmware level on any server, go to the following web page to access the Fix Level Recommendation Tool (FLRT) on or after the planned availability date for this product. FLRT will identify the correct HMC machine code for the selected system firmware level; see the Fix Level Recommendation Tool website.
+
+If a single HMC is attached to multiple servers, the HMC machine code level must be updated to be at or higher than the server with the most recent firmware level. All prior levels of server firmware are supported with the latest HMC machine code level.
+
+The HMC code latest level contains the following:
+
+Support for managing Power S922, Power S924, and Power S914 systems.
+Support for the new HMC model 7063-CR1.
+Support for PowerVM functions such as the new HMC GUI interface for VIOS management.
+GUI for HMC's Performance and Capacity Monitoring function.
+An HMC command to initiate a remote restart operation. This removes the requirement of VMControl for the PowerVM Remote Restart function.
+For PowerVM GUI functions, VIOS is recommended.
+For clients installing systems higher than the EIA 29 position (location of the rail that supports the rack-mounted server) in any IBM or non-IBM rack, acquire approved tools outlined in the server specifications section at IBM Knowledge Center. In situations where IBM service is required and the recommended tools are not available, there could be delays in repair actions.

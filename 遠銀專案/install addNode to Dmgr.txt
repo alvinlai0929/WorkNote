@@ -1,0 +1,4 @@
+addNode alvin1 8879 -conntype soap -profileName Node1 -username wasadmin -password wasadmin
+
+作 syncNode
+syncNode.bat alvin1 8879 -username wasadmin -password wasadmin

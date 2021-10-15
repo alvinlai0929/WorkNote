@@ -1,0 +1,92 @@
+Scsi 
+
+
+#make vscsi adapter on Lpar alvin1
+
+#chsyscfg -r prof -m PTeamLAB_4F_8284-22A-SN689CCFW -i \
+"name=was,lpar_name=alvin1, \
+\"virtual_scsi_adapters=3/client/1/vios/3211/0\"" --force
+
+＃新增裝置到Lpar
+chhwres -r virtualio -m PTeamLAB_4F_8284-22A-SN689CCFW -o a -p alvin1 --rsubtype scsi -s 3 -a "adapter_type=client,remote_lpar_name=vios,remote_slot_num=3211" 
+
+＃將目前設定存檔線上生效 不需重開機
+mksyscfg -r prof -m PTeamLAB_4F_8284-22A-SN689CCFW -o save -p alvin1 -n `lssyscfg -r lpar -m PTeamLAB_4F_8284-22A-SN689CCFW  --filter "lpar_names=alvin1" -F curr_profile` --force
+
+#login Lpar
+
+cfgmgr
+
+#check adapter
+
+lsdev -Cc adapter
+
+
+#make vscsi adapter on vios
+
+#chsyscfg -r prof -m PTeamLAB_4F_8284-22A-SN689CCFW -i \
+"name=vios,lpar_name=vios, \
+\"virtual_scsi_adapters=3211/server/22/alvin1/3/0\""  --force
+
+chhwres -r virtualio -m PTeamLAB_4F_8284-22A-SN689CCFW -o a -p vios --rsubtype scsi -s 3211 -a "adapter_type=server,remote_lpar_name=alvin1,remote_slot_num=3" 
+
+mksyscfg -r prof -m PTeamLAB_4F_8284-22A-SN689CCFW -o save -p vios -n `lssyscfg -r lpar -m PTeamLAB_4F_8284-22A-SN689CCFW  --filter "lpar_names=vios" -F curr_profile` --force
+
+
+
+
+
+#login vio server 
+
+#power off vio server
+shutdown -F
+
+#power on vio
+
+#on vios
+lsdev -slots|grep 3211
+
+vhost40
+
+lspv
+chdev -dev hdisk8 -attr reserve_policy=no_reserve
+
+lsdev -dev hdisk8 -attr reserve_policy
+
+mkvdev -vdev hdisk8 -vadapter vhost40 -dev maphdisk8
+
+#check map 
+lsmap -vadapter vhost40
+
+
+#power off Lpar
+#power on Lpar
+
+
+#on lpar
+lspv
+
+cfgmgr
+
+#finished!
+
+
+
+
+
+線上加卡片
+https://techchannel.com/SMB/08/2021/cli-options-lpars
+
+
+
+mksyscfg -r prof -m PTeamLAB_4F_8284-22A-SN689CCFW -o save -p vios -n `lssyscfg -r lpar -m PTeamLAB_4F_8284-22A-SN689CCFW  --filter "lpar_names=vios" -F curr_profile` --force
+
+
+
+
+
+
+
+
+
+

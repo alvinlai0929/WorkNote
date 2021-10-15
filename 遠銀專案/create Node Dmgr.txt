@@ -1,0 +1,61 @@
+manageprofiles.bat -create -proileName Dmgr -enableAdminSecurity true -adminUserName wasadmin -
+adminPassword wasadmin -cellName DmgrCell -hostName alvin -nodeName Dmgr 
+
+
+cd /usr/IBM/WebSphere/AppServer/bin \
+
+manageprofiles.bat -create -profileName Node1 -profilePath "D:\Program Files\IBM\WebSphere\AppServer\profiles\Node1" -templatePath "D:\Program Files\IBM\WebSphere\AppServer\profileTemplates\managed" -cellName alvin1Cell01 -hostName alvin -nodeName Node1
+
+
+addNode alvin 8879 -conntype soap -profileName Node1 -username wasadmin -password wasadmin 
+
+startNode.bat -profileName Node1
+
+startManager.bat
+
+stopNode.bat -profileName Node1 -username wasadmin -password wasadmin
+
+stopManager.bat -username wasadmin -password wasadmin
+
+ 
+
+
+addNode dmgr_host dmgr_port -asExistingNode -username user_name -password password
+
+
+#################################################S
+
+Recovering or moving nodes with the addNode -asExistingNode command
+https://www.ibm.com/docs/zh-tw/was/9.0.5?topic=SSEQTP_9.0.5/com.ibm.websphere.nd.multiplatform.doc/ae/tagt_addNode_asExistingNode.html#tagt_addNode_asExistingNode__movesamepath
+
+cd /dmgr/bin 
+wsadmin -lang jython -userName wasadmin -password wasadmin
+
+AdminTask.changeHostName('[-hostName alvin -nodeName Node1]')
+
+AdminConfig.save()
+
+quit
+
+manageprofiles.bat -delete -profileName Node1 -userName wasadmin -password wasadmin
+
+createprofile
+/profiles/Node1/bin
+addNode alvin 8879 -asExistingNode -username wasadmin -password wasadmin
+
+startNode.bat
+
+syncNode.bat alvin 8879 -username wasadmin -password wasadmin
+
+
+
+
+
+https://www.ibm.com/docs/en/was/9.0.5?topic=SSEQTP_9.0.5/com.ibm.websphere.nd.multiplatform.doc/ae/rxml_addnode.html
+
+
+
+
+
+
+
