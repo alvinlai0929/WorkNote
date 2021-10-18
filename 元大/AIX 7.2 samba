@@ -91,4 +91,22 @@ Error: Package: cyrus-sasl-2.1.26-5.ppc (AIX_Toolbox)
  You could try using --skip-broken to work around the problem
  You could try running: rpm -Va --nofiles --nodigest
 
+https://www.ibm.com/support/pages/apar/IJ12089
+
+update openssl
+
+cd /etc/ssh
+cp -p ssh_config ssh_config.orig
+cp -p sshd_config sshd_config.orig
+
+stopsrc -s sshd;startsrc -s sshd
+
+yum install yum-plugin-downloadonly
+
+yum list samba --showduplicates
+
+
+#未完成
+yum install --skip-broken --downloadonly --downloaddir=/tmp/samba/4.3.11-1 / samba-4.3.11-1
+
 
