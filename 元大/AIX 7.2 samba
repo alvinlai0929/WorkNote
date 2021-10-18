@@ -107,6 +107,46 @@ yum list samba --showduplicates
 
 
 #未完成
-yum install --skip-broken --downloadonly --downloaddir=/tmp/samba/4.3.11-1 / samba-4.3.11-1
+yum install  --downloadonly --downloaddir=/tmp/samba/4.3.11-1 / samba-4.3.11-1
+
+rpm -ivh \
+samba-4.14.4-2.aix7.2.ppc.rpm \
+samba-client-4.14.4-2.aix7.2.ppc.rpm \
+samba-common-4.14.4-2.aix7.2.ppc.rpm \
+samba-devel-4.14.4-2.aix7.2.ppc.rpm \
+samba-libs-4.14.4-2.aix7.2.ppc.rpm \
+samba-winbind-4.14.4-2.aix7.2.ppc.rpm \
+samba-winbind-clients-4.14.4-2.aix7.2.ppc.rpm \
+python3-3.7.11-1.aix6.1.ppc.rpm \
+cups-libs-2.2.3-3.aix6.1.ppc.rpm \
+gnutls-3.7.1-1.aix6.1.ppc.rpm \
+libsmbclient-4.14.4-2.aix7.2.ppc.rpm \
+popt-1.18-1.aix6.1.ppc.rpm \
+coreutils-8.32-1.aix6.1.ppc.rpm \
+gmp-6.1.2-1.aix6.1.ppc.rpm \
+nettle-3.7.3-1.aix6.1.ppc.rpm
+
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:popt-1.18-1                      ################################# [  7%]
+   2:python3-3.7.11-1                 ################################# [ 13%]
+   3:gmp-6.1.2-1                      ################################# [ 20%]
+   4:coreutils-8.32-1                 ################################# [ 27%]
+   5:nettle-3.7.3-1                   ################################# [ 33%]
+   6:gnutls-3.7.1-1                   ################################# [ 40%]
+   7:cups-libs-2.2.3-3                ################################# [ 47%]
+   8:samba-devel-4.14.4-2             ################################# [ 53%]
+   9:samba-libs-4.14.4-2              ################################# [ 60%]
+3004-686 Group "wbpriv" does not exist.
+  10:samba-winbind-4.14.4-2           ################################# [ 67%]
+  11:samba-winbind-clients-4.14.4-2   ################################# [ 73%]
+  12:libsmbclient-4.14.4-2            ################################# [ 80%]
+  13:samba-common-4.14.4-2            ################################# [ 87%]
+  14:samba-client-4.14.4-2            ################################# [ 93%]
+  15:samba-4.14.4-2                   ################################# [100%]
+
+A guide to installing Samba on AIX can be found in /opt/freeware/doc/samba-4.14.4/README.AIX_Samba_Usage_Guide
+
+
 
 
