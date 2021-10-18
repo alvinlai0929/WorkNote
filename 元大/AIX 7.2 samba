@@ -150,3 +150,10 @@ A guide to installing Samba on AIX can be found in /opt/freeware/doc/samba-4.14.
 
 
 
+#降板
+yum list samba --showduplicates
+
+yum downgrade  samba-4.12.7-1 
+
+
+yum install samba-4.12.7-1
