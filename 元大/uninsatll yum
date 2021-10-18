@@ -1,4 +1,12 @@
 https://www.ibm.com/support/pages/uninstall-yumrpm-package-management-and-individual-rpm-removal
 
+http://blog.itist.tw/2016/09/install-delete-upgrade-downgrade-and-verify-rpm-packages-on-centos-7.html
+
+#uninstall
 rpm -evh yum-plugin-downloadonly-1.1.31-2.noarch yum-utils-1.1.31-2.noarch yum-3.4.3-8.noarch
+
+#testinstall
+
+ rpm -ivh --test 
+
 
