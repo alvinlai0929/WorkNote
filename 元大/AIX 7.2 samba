@@ -55,14 +55,6 @@ yum downgrade
 
 
 SAMBA
-<<<<<<< HEAD
-
-
-
-rpm -ivh \
-samba-3.6.24-1.aix7.1.ppc.rpm \
-samba-common-3.6.24-1.aix7.1.ppc.rpm \
-=======
 3.6.25.1
 /usr/sbin/updtvpkg
 
@@ -118,4 +110,3 @@ yum list samba --showduplicates
 yum install --skip-broken --downloadonly --downloaddir=/tmp/samba/4.3.11-1 / samba-4.3.11-1
 
 
->>>>>>> 7cef429a85cfa3e27dbe953149f67b4db5bb5571
