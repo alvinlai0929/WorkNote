@@ -55,3 +55,6 @@ yum downgrade
 
 
 SAMBA
+3.6.25.1
+/usr/sbin/updtvpkg
+rpm --rebuilddb
