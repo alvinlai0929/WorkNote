@@ -1,0 +1,57 @@
+7200-00-01-1543
+
+RPM
+3.0.5.53
+更新至4.9.1.3
+
+https://public.dhe.ibm.com/aix/freeSoftware/aixtoolbox/INSTALLP/ppc/rpm.rte.4.9.1.3
+
+yum
+yum_bundle_v1.tar
+yum-3.4.3-3 
+
+
+smitty installp 
+
+rpm -qa yum
+
+yum install yum-plugin-downloadonly
+
+
+yum list samba --showduplicates
+
+
+yum info samba-4.12.7-1 
+
+yum install --downloadonly --downloaddir=/tmp/samba/4.12.7-1/ samba-4.12.7-1
+
+yum install --downloadonly --downloaddir=/tmp/samba/4.12.10-1/ samba-4.12.10-1
+
+yum install --downloadonly --downloaddir=/tmp/samba/4.14.4-2 / samba 
+
+
+Error: Package: openldap-2.4.58-1.ppc (AIX_Toolbox)
+           Requires: libssl.a(libssl.so.1.0.2)
+Error: Package: python-2.7.18-3.ppc (AIX_Toolbox)
+           Requires: libssl.a(libssl.so.1.0.2)
+Error: Package: python3-3.7.11-1.ppc (AIX_Toolbox)
+           Requires: libcrypto.a(libcrypto.so.1.0.2)
+Error: Package: python3-3.7.11-1.ppc (AIX_Toolbox)
+           Requires: libssl.a(libssl.so.1.0.2)
+Error: Package: python-2.7.18-3.ppc (AIX_Toolbox)
+           Requires: libcrypto.a(libcrypto.so.1.0.2)
+Error: Package: openldap-2.4.58-1.ppc (AIX_Toolbox)
+           Requires: libcrypto.a(libcrypto.so.1.0.2)
+Error: Package: cyrus-sasl-2.1.26-5.ppc (AIX_Toolbox)
+           Requires: libcrypto.a(libcrypto.so.1.0.2)
+
+openssl
+https://mrs-ux.mrs-prod-7d4bdc08e7ddc90fa89b373d95c240eb-0000.us-south.containers.appdomain.cloud/marketing/iwm/platform/mrs/assets/DownloadList?source=aixbp&lang=en_US
+openssh
+
+
+
+yum downgrade
+
+
+SAMBA

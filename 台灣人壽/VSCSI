@@ -25,8 +25,8 @@ lsdev -Cc adapter
 #make vscsi adapter on vios
 
 #chsyscfg -r prof -m PTeamLAB_4F_8284-22A-SN689CCFW -i \
-"name=vios,lpar_name=vios, \
-\"virtual_scsi_adapters=3211/server/22/alvin1/3/0\""  --force
+    "name=vios,lpar_name=vios, \
+    \"virtual_scsi_adapters=3211/server/22/alvin1/3/0\""  --force
 
 chhwres -r virtualio -m PTeamLAB_4F_8284-22A-SN689CCFW -o a -p vios --rsubtype scsi -s 3211 -a "adapter_type=server,remote_lpar_name=alvin1,remote_slot_num=3" 
 
