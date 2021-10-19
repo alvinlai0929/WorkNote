@@ -71,7 +71,7 @@ smitty INSTALLP
 
 yum install yum-plugin-downloadonly
 
-yum install --downloadonly --downloaddir=/tmp/samba/4.12.15-1 / samba-4.12.15-1 
+yum install --downloadonly --downloaddir=/tmp/samba/4.14.4-2 / samba 
 
 
 Error: Package: openldap-2.4.58-1.ppc (AIX_Toolbox)
@@ -101,11 +101,6 @@ cp -p sshd_config sshd_config.orig
 
 stopsrc -s sshd;startsrc -s sshd
 
-#openssl.base文件集安裝或更新後，  運行以下命令。這將更新虛擬 AIX-rpm 包，以便 rpm 安裝程序知道新的或更新的庫：
-
-/usr/sbin/updtvpkg
-
-
 yum install yum-plugin-downloadonly
 
 yum list samba --showduplicates
@@ -113,8 +108,6 @@ yum list samba --showduplicates
 
 #未完成
 yum install  --downloadonly --downloaddir=/tmp/samba/4.3.11-1 / samba-4.3.11-1
-<<<<<<< HEAD
-=======
 
 rpm -ivh \
 samba-4.14.4-2.aix7.2.ppc.rpm \
@@ -161,7 +154,32 @@ A guide to installing Samba on AIX can be found in /opt/freeware/doc/samba-4.14.
 yum list samba --showduplicates
 
 yum downgrade  samba-4.12.7-1 
->>>>>>> ee16e5f1e7461925786b88ece7f33ce592efcf4f
 
 
 yum install samba-4.12.7-1
+
+
+
+
+SAMBA
+3.6.25.1
+/usr/sbin/updtvpkg
+
+rpm --rebuilddb
+
+#on rpm installp (rpm.rte.3.0.5.54 rpm.rte.4.9.1.3)
+
+smitty INSTALLP
+
+#on yum v1 installp  (chfs -a size=+5G /tmp /home)
+smitty INSTALLP
+
+#yum install yum-plugin-downloadonly
+
+yum install yum-plugin-downloadonly
+
+yum install --downloadonly --downloaddir=/tmp/samba/4.14.4-2 / samba 
+
+#下載4.12
+https://public.dhe.ibm.com/aix/freeSoftware/aixtoolbox/RPMS/ppc-7.2/samba/
+
