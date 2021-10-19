@@ -1,7 +1,7 @@
 set OPENSSL_CONF=c:\Apache24\conf\openssl.cnf
 
 建立私鑰
-Openssl genrsa -our xxx.key 2048
+Openssl genrsa -out xxx.key 2048
 
 建立請求檔
 Openssl req -new -key xxx.key -out ooo.csr
