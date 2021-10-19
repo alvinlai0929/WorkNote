@@ -71,7 +71,7 @@ smitty INSTALLP
 
 yum install yum-plugin-downloadonly
 
-yum install --downloadonly --downloaddir=/tmp/samba/4.14.4-2 / samba 
+yum install --downloadonly --downloaddir=/tmp/samba/4.12.15-1 / samba-4.12.15-1 
 
 
 Error: Package: openldap-2.4.58-1.ppc (AIX_Toolbox)
@@ -101,12 +101,17 @@ cp -p sshd_config sshd_config.orig
 
 stopsrc -s sshd;startsrc -s sshd
 
+#openssl.base文件集安裝或更新後，  運行以下命令。這將更新虛擬 AIX-rpm 包，以便 rpm 安裝程序知道新的或更新的庫：
+
+/usr/sbin/updtvpkg
+
+
 yum install yum-plugin-downloadonly
 
 yum list samba --showduplicates
 
 
 #未完成
-yum install --skip-broken --downloadonly --downloaddir=/tmp/samba/4.3.11-1 / samba-4.3.11-1
+yum install  --downloadonly --downloaddir=/tmp/samba/4.3.11-1 / samba-4.3.11-1
 
 
