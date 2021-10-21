@@ -54,9 +54,7 @@ swat stream tcp nowait.400 root /usr/local/samba/sbin/swat swat
 
 
 
-<<<<<<< HEAD
 https://blog.csdn.net/iteye_3941/article/details/82276040
-=======
 find /  -name swat -print
 
 https://developer.ibm.com/articles/au-aix_samba/
@@ -694,4 +692,3 @@ The logs can be looked at for any error messages, whenever it is required.
 
 Conclusion
 This article showed how to set up and configure the Samba server. You saw how shares can be defined and accessed from Windows. Different authentication mechanisms are also discussed.
->>>>>>> 5912f85841322a5394e1b97b3ca9b59ec17bdffb
