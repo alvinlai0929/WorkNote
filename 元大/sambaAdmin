@@ -1,0 +1,56 @@
+一、下载samba-3.0.4.0.bff 
+二、将文件放在AIX系统的临时安装目录下，如：/usr/samba 
+三、 smit installp，将安装来源目录定位到/usr/samba下，安装； 
+四. 安装成功之后将会生成/usr/local/samba目录，此路径下的bin目录是samba的应用程序，sbin目录是samba的daemon，lib目录下的smb.conf是samba的配置文件。 
+配置过程 
+1.编辑/usr/local/samba/lib/smb.conf/文件，一个简单的smb.conf文件示例如下： 
+[global] 
+workgroup = workgroup 
+server string = Samba 3.0.4.0 
+security = user 
+encrypt passwords = Yes 
+smb passwd file = /var/samba/private/smbpasswd 
+log file = /usr/local/samba/var/log.%m 
+mangle case = Yes 
+[homes] 
+force user = %U 
+read only = No 
+hosts allow = 129.183. 
+[printers] 
+comment = All Printers 
+path = /usr/spool/samba 
+printable = Yes 
+browseable = No 
+[public] 
+path = /jdlssoft/interface 
+read only = no 
+public = yes 
+[root] 
+comment = root directory 
+path = / 
+read only = no 
+public = yes 
+
+2. 检查/etc/services文件，看是否有如下几行： 
+netbios-ns 137/tcp # NETBIOS Name Service 
+netbios-ns 137/udp # NETBIOS Name Service 
+netbios-dgm 138/tcp # NETBIOS Datagram Service 
+netbios-dgm 138/udp # NETBIOS Datagram Service 
+netbios-ssn 139/tcp # NETBIOS Session Service 
+netbios-ssn 139/udp # NETBIOS Session Service 
+swat 901/tcp # swat service of samba 
+如果没有，则加上。 
+3. 检查/etc/inetd.conf文件，看是否有如下几行： 
+netbios-ssn stream tcp nowait root /usr/local/samba/sbin/smbd smbd 
+netbios-ns dgram udp wait root /usr/local/samba/sbin/nmbd nmbd 
+swat stream tcp nowait.400 root /usr/local/samba/sbin/swat swat 
+如果没有，则加上。 
+4. 由于AIX下与Windows下对密码处理认证方式不同，因此导致输入正确的密码时还是无法通过，因此要将smb.conf的encrypt passwords = Yes，Samba 3.0.1.0目前的版本默认的是Yes，smb密码文件默认为/usr/local/samba/private/smbpasswd，可由SWAT工具修改； 
+5. 执行/usr/local/samba/bin/smbpasswd -a xxx，密码与该用户操作系统密码相同，建立xxx用户的存取密码； 
+如/usr/local/samba/bin/smbpasswd -a root 
+6. refresh -s inetd，刷新inetd启动samba； 
+7. 使用Windows的客户端共享访问，测试是否配置成功。
+
+
+
+http://www.ixpub.net/thread-649754-1-1.html
