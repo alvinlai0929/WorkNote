@@ -51,7 +51,7 @@ openssh
 
 
 
-yum downgrade
+yum downgrade 
 
 
 SAMBA
@@ -182,4 +182,66 @@ yum install --downloadonly --downloaddir=/tmp/samba/4.14.4-2 / samba
 
 #下載4.12
 https://public.dhe.ibm.com/aix/freeSoftware/aixtoolbox/RPMS/ppc-7.2/samba/
+
+
+
+update openssl
+update RPM 
+
+stopsrc -g ssh;startsrc -g ssh
+
+
+
+/usr/sbin/updtvpkg
+
+rpm --rebuilddb
+
+chfs -a size=+10G /opt
+chfs -a size=+10G /usr
+chfs -a size=+10G /tmp
+chfs -a size=+10G /home
+
+rpm -Uvh *
+
+From cyrus-sasl 2.1.26-5 onwards, symbolic links in /usr/sbin has been removed.
+The binaries are shipped in /opt/freeware/sbin. Please use absolute path or
+add /opt/freeware/sbin in PATH environment variable to use the binary.
+3004-686 Group "ldap" does not exist.
+  36:openldap               ########################################### [ 75%]
+  37:libsmbclient           ########################################### [ 77%]
+  38:samba-devel            ########################################### [ 79%]
+  39:samba-libs             ########################################### [ 81%]
+3004-686 Group "wbpriv" does not exist.
+  40:samba-winbind          ########################################### [ 83%]
+  41:samba-winbind-clients  ########################################### [ 85%]
+  42:samba-common           ########################################### [ 88%]
+  43:samba-client           ########################################### [ 90%]
+  44:samba                  ########################################### [ 92%]
+
+A guide to installing Samba on AIX can be found in /opt/freeware/doc/samba-4.14.4/README.AIX_Samba_Usage_Guide
+
+  45:pysqlite               ########################################### [ 94%]
+  46:python-devel           ########################################### [ 96%]
+  47:python-tools           ########################################### [ 98%]
+  48:yum-metadata-parser    ########################################### [100%]
+
+
+vi /etc/env*
+:/opt/freeware/sbin/
+
+#查看目前安裝
+rpm -qa | grep
+
+#移除
+rpm -e samba 
+
+browsable = yes
+
+writable = yes
+
+guest ok = yes
+
+read only = no
+
+
 
