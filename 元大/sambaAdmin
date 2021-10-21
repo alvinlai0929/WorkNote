@@ -55,6 +55,8 @@ swat stream tcp nowait.400 root /usr/local/samba/sbin/swat swat
 
 find /  -name swat -print
 
+https://developer.ibm.com/articles/au-aix_samba/
+
 Starting the Samba server
 Samba has two daemons, nmbd and smbd, that need to be running in order for Samba to work correctly.
 
