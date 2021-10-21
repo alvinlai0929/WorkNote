@@ -1,9 +1,10 @@
-一、下载samba-3.0.4.0.bff 
-二、将文件放在AIX系统的临时安装目录下，如：/usr/samba 
-三、 smit installp，将安装来源目录定位到/usr/samba下，安装； 
-四. 安装成功之后将会生成/usr/local/samba目录，此路径下的bin目录是samba的应用程序，sbin目录是samba的daemon，lib目录下的smb.conf是samba的配置文件。 
+#一、下载samba-3.0.4.0.bff 
+#二、将文件放在AIX系统的临时安装目录下，如：/usr/samba 
+#三、 smit installp，将安装来源目录定位到/usr/samba下，安装； 
+
+安装成功之后将会生成/opt/freeware/目录，此路径下的bin目录是samba的应用程序，sbin目录是samba的daemon，lib目录下的smb.conf是samba的配置文件。 
 配置过程 
-1.编辑/usr/local/samba/lib/smb.conf/文件，一个简单的smb.conf文件示例如下： 
+1.编辑/etc/samba/smb.conf/文件，一个简单的smb.conf文件示例如下： 
 [global] 
 workgroup = workgroup 
 server string = Samba 3.0.4.0 
@@ -53,6 +54,9 @@ swat stream tcp nowait.400 root /usr/local/samba/sbin/swat swat
 
 
 
+<<<<<<< HEAD
+https://blog.csdn.net/iteye_3941/article/details/82276040
+=======
 find /  -name swat -print
 
 https://developer.ibm.com/articles/au-aix_samba/
@@ -690,3 +694,4 @@ The logs can be looked at for any error messages, whenever it is required.
 
 Conclusion
 This article showed how to set up and configure the Samba server. You saw how shares can be defined and accessed from Windows. Different authentication mechanisms are also discussed.
+>>>>>>> 5912f85841322a5394e1b97b3ca9b59ec17bdffb
