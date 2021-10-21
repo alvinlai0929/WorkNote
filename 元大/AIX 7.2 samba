@@ -113,8 +113,6 @@ yum list samba --showduplicates
 
 #未完成
 yum install  --downloadonly --downloaddir=/tmp/samba/4.3.11-1 / samba-4.3.11-1
-<<<<<<< HEAD
-=======
 
 rpm -ivh \
 samba-4.14.4-2.aix7.2.ppc.rpm \
@@ -161,7 +159,6 @@ A guide to installing Samba on AIX can be found in /opt/freeware/doc/samba-4.14.
 yum list samba --showduplicates
 
 yum downgrade  samba-4.12.7-1 
->>>>>>> ee16e5f1e7461925786b88ece7f33ce592efcf4f
 
 
 yum install samba-4.12.7-1

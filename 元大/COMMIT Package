@@ -1,0 +1,6 @@
+#列出未commit的套件
+lppchk -v
+#commit 所有
+installp -c all
+#commit 指定套件
+installp -c rpm.rte 3.0.5.53
