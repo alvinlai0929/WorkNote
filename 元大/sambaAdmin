@@ -692,3 +692,43 @@ The logs can be looked at for any error messages, whenever it is required.
 
 Conclusion
 This article showed how to set up and configure the Samba server. You saw how shares can be defined and accessed from Windows. Different authentication mechanisms are also discussed.
+
+
+
+
+
+Samba參考設定檔(/etc/samba/smb.conf)
+
+workgroup = JGroup   //工作群組的名稱
+server string = JStore    //主機的簡易說明
+netbios name = JStore    //主機的 NetBIOS 名稱
+unix charset = utf8   //在 Linux 伺服器上面所使用的編碼，一般來說就是 i18n 的編碼。
+display charset = utf8   //自己伺服器上面的顯示編碼
+dos charset = cp950   //Windows 用戶端的編碼
+
+log file = /var/log/samba/log.%m   //登錄檔放置的檔案
+max log size = 50   //登錄檔最大僅能到多少 Kbytes ，若大於該數字，則會被 rotate 掉。
+
+security = user   //使用 SAMBA 伺服器本身的密碼資料庫
+passdb backend = tdbsam   //資料庫格式
+
+[JStore]   //分享名稱
+        path = /jstore   //分享路徑
+        public = yes
+        browseable = yes   //是否讓所有的使用者看到這個項目？
+        writable = yes   //是否可以寫入？
+        write list = root   //使用者, @群組
+
+建立Samba帳號
+
+# useradd -G users james   //先建立OS帳號
+
+# echo 123456 | passwd --stdin james
+
+# pdbedit -a -u james   //建立Samba帳號
+
+# pdbedit -L   //查詢目前已經存在的Samba帳號
+
+# smbpasswd james   //修改密碼
+
+# pdbedit -x -u james   //刪除Samba帳號

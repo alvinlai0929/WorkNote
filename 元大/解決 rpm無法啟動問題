@@ -1,7 +1,7 @@
 在自己環境 
 
-tar -cvf /tmp/lib.tar /usr/opt/freeware/lib/*
-tar -cvf /tmp/rpmlib.tar   /usr/opt/rpm/lib/*
+tar -cvf /tmp/lib_20211025.tar /usr/opt/freeware/lib/*
+tar -cvf /tmp/rpmlib_20211025.tar   /usr/opt/rpm/lib/*
 
 
 
