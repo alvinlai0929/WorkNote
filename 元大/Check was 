@@ -1,0 +1,12 @@
+ps -ef |grep -i java |grep -v grep|grep -v nodeagent|grep -v dmgr|awk '{print $1, $2, $NF}'
+
+
+ps av 3604628
+      PID    TTY STAT  TIME PGIN  SIZE   RSS   LIM  TSIZ   TRS %CPU %MEM COMMAND
+  3604628      - A    216:04  180 105636 105820    xx   117   184  0.1  0.0 /usr/I
+
+
+
+RSS 就是記憶體實際使用量 KB 
+VSZ	虚拟内存占用大小 单位：kb（killobytes）
+RSS	实际内存占用大小 单位：kb（killobytes）
