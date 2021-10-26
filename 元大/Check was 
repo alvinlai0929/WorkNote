@@ -8,5 +8,5 @@ ps av 3604628
 
 
 RSS 就是記憶體實際使用量 KB 
-VSZ	虚拟内存占用大小 单位：kb（killobytes）
-RSS	实际内存占用大小 单位：kb（killobytes）
+VSZ	虛擬記憶體占用大小 单位：kb（killobytes）
+RSS	實體記憶體占用大小 单位：kb（killobytes）
