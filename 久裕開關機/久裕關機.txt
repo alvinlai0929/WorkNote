@@ -37,7 +37,7 @@ ssh hscroot@192.168.0.193
 abc123
 vtmenu
 確認所有lpar 已關閉
-
+lssyscfg -r sys -F name,state
  chsysstate -r lpar -m P520-9131-52A-SN06E2FFG -o on -n ha_standby
 
 #關機
