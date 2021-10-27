@@ -1,0 +1,16 @@
+在自己環境 
+
+tar -cvf /tmp/lib_20211025.tar /usr/opt/freeware/lib/*
+tar -cvf /tmp/rpmlib_20211025.tar   /usr/opt/rpm/lib/*
+
+
+
+客戶環境
+
+tar -cvf /tmp/ddsc/libbk.tar /usr/opt/freeware/lib/*
+
+tar -cvf /tmp/ddsc/rpm.tar  /opt/freeware/rpm/*
+
+
+tar -xvf lib.tar
+tar -xvf rpm.tar
