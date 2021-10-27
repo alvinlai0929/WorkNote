@@ -1,0 +1,39 @@
+B: Disable the CDE Login Manager (Remote and Local Login)
+
+B.1)  Kill the current dtlogin processes.
+# /usr/dt/bin/dtconfig -kill
+# ps -ef | grep dtlogin | grep -v grep
+# kill -KILL <dtlogin's PID>
+
+B.2) Cleanup /var files.
+# rm /var/dt/Xpid
+# mv /var/dd/Xerrors /var/dt/Xerrors.old
+
+B.3) Disable CDE Login Manager in inittab.
+# /usr/dt/bin/dtconfig -d
+
+
+
+Disable remote CDE logins
+
+D.1) Disable the XDMCP listening in the Xconfig file.
+Check for an existing CDE global customized Xconfig file:
+# ls -al /etc/dt/config/Xconfig
+
+Make a copy, if it does not exist:
+# mkdir -p /etc/dt/config
+# cp /usr/dt/config/Xconfig /etc/dt/config/Xconfig
+
+Edit the customized Xconfig file to disable the XDMCP requests:
+# vi /etc/dt/config/Xconfig
+     #  To disable listening for XDMCP requests from X-terminals:
+          UNCOMMENT THIS LINE: -->  Dtlogin.requestPort:       0
+
+
+
+
+
+
+
+
+https://www.ibm.com/support/pages/aix-x11-disable-or-remove-common-desktop-environment-cde
