@@ -1,3 +1,7 @@
+專案代號：SB100073
+
+
+
 VPN
 
 125.227.149.175
@@ -44,6 +48,11 @@ chsysstate -m P520-9131-52A-SN06E2FFG -r sys -o on
 
 #用此指令確認主機開機狀態
 lssyscfg -r sys -F name,state
+
+hscroot@localhost:~> lssyscfg -r sys -F name,state
+P520-9131-52A-SN06E2FFG,Operating
+P720-8202-E4D-SN10A81ET,Operating
+
 
 #開機後 進入看Lpar是否有開啟
 vtmenu
