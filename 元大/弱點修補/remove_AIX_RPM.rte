@@ -1,0 +1,44 @@
+1. Backup the ODM using the following command:
+# /usr/lib/instl/saveodms rpm.fix.backup --> this saves the VPD to /u/rpm.fix.backup.odm
+2. Prepare to examine the USR part of the ODM.
+# export ODMDIR=/usr/lib/objrepos
+3. Determine the lpp_id for the fileset that could not be removed with installp.
+# odmget -q name=rpm.rte lpp
+Take note of the the USR part lpp_id for reference while doing other steps.
+EXAMPLE:
+# odmget -q name=rpm.rte lpp
+
+lpp:
+        name = "rpm.rte"
+        size = 0
+        state = 5
+        cp_flag = 2097427
+        group = ""
+        magic_letter = "I"
+        ver = 4
+        rel = 13
+        mod = 0
+        fix = 11
+        description = "RPM Package Manager"
+        lpp_id = 1043
+4. Delete the filesets from  the USR part of the ODM.
+# odmdelete -q name=rpm.rte -o lpp
+# odmdelete -q lpp_name=rpm.rte -o product
+# odmdelete -q lpp_id=<lpp_id from command above> -o history
+# odmdelete -q lpp_id=<lpp_id from command above> -o inventory
+5. Prepare to examine the ROOT part of the ODM
+# export ODMDIR=/etc/objrepos
+6. Determine the lpp_id for the fileset.
+# odmget -q name=rpm.rte lpp
+Take note of the ROOT part lpp_id for reference while doing other steps. 
+If the command does not return data, there is no ODM information present in the ROOT part /etc/objrepos. Proceed to step #8.
+7. Delete the filesets from the ROOT part of the ODM.
+# odmdelete -q name=rpm.rte -o lpp
+# odmdelete -q lpp_name=rpm.rte -o product
+# odmdelete -q lpp_id=<lpp_id from command above> -o history
+# odmdelete -q lpp_id=<lpp_id from command above> -o inventory
+8. Check the SWVPD for remaining filesets.
+# lslpp -l rpm.rte
+
+9. Check the SWVPD for errors.
+# lppchk -v
