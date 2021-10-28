@@ -1,0 +1,4 @@
+準備source
+燒錄到隨身碟
+sudo dd if=/Users/laichienfu/Downloads/PVMVIOSBI_V3.1.2.10_FLASH_12021.iso of=/dev/disk2 bs=1m
+
