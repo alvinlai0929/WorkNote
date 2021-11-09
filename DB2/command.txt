@@ -1,0 +1,66 @@
+
+
+DB2 select
+
+time db2 "select * from chb.t1 fetch first 1000 rows only"
+
+
+time db2 "select * from chb.t1 where CHNL_RTN_SN='010211140000155'"
+
+
+/CHBDB/WISE
+
+
+db2 drop database pocdby
+
+db2 create database  pocdby on /pocdbx
+
+db2 restore database pocdbx from /CHBDB/WISE taken at 20211104162335 to /pocdbx/chbadmin  into pocdby
+
+db2 restore database pocdbx from /CHBDB/WISE taken at 20211104162335 
+
+
+
+/pocdbx/chbadmin/NODE0000/POCDBX
+
+
+db2 "select count(*) from chb.t2"
+
+
+time db2 "select * from chb.t4 where price_date='2020/01/07'"    (200萬筆)
+
+time db2 "select count(*) from chb.t3 where price_date='2020/01/07'"
+
+
+time db2 "select count(*) from chb.t2 where curcd='CNY'"     (150萬筆)
+
+db2 "export to 't4.ixf' of ixf select * from chb.t4 where 1=2"
+
+db2 "import from 'T3b.ixf' of ixf create into chb.t3"
+time db2 -v "load from '/CHBDB/WISE/T4.ixf' of ixf messages '/CHBDB/WISE/T4.loadmsg' replace  into chb.t4 NONRECOVERABLe"
+
+db2 "create database db4 on /pocdbx using codeset UTF-8 TERRITORY tw pagesize 8 k"
+
+time db2 "select count(*) from chb.t4 where PRICE_DATE = '2021/09/28'"
+
+db2 "create table chb.tt  (id char(1)) "
+
+
+AIX Version 7.2!  
+Database server        = DB2/AIX64 11.1.4.5
+
+
+db2  drop database pocdby 
+
+db2 create database  pocdby on /pocdbx  using codepage UTF-8 TERRITORY TW pagesize 8k
+
+db2  CREATE DATABASE pocdby on /pocdbx  USING CODESET UTF-8 TERRITORY TW  pagesize 8 k
+
+db2 "import from 't4b.ixf' of ixf create into chb.pocdby"
+time db2 -v "load from '/CHBDB/WISE/T4.ixf' of ixf messages '/CHBDB/WISE/pocdby01.loadmsg' replace  into chb.pocdby NONRECOVERABLe"
+
+
+
+
+
+        
