@@ -59,7 +59,6 @@ db2  CREATE DATABASE pocdby on /pocdbx  USING CODESET UTF-8 TERRITORY TW  pagesi
 db2 "import from 't4b.ixf' of ixf create into chb.pocdby"
 time db2 -v "load from '/CHBDB/WISE/T4.ixf' of ixf messages '/CHBDB/WISE/pocdby01.loadmsg' replace  into chb.pocdby NONRECOVERABLe"
 
-
  LIST DATABASE DIRECTORY 
 
 
