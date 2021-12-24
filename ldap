@@ -1,0 +1,99 @@
+vim basedn.ldif
+
+dn: olcDatabase={2}mdb,cn=config           #<==就是這個 dn 的設計！
+changetype: modify                         #<==動作是修改！
+replace: olcSuffix                         #<==取代這個項目
+olcSuffix: base                       #<==實際的值！
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: root
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW: {SSHA}vcz+SUHQTLPojCen2UJXLPDNMHKVJttt
+
+dn: olcDatabase={1}monitor,cn=config
+changetype: modify
+replace: olcAccess
+olcAccess: {0}to *
+   by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" read
+   by dn.base="cn=alvin,dc=alvin,dc=com" read
+   by * none
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcSuffix
+olcSuffix: dc=example,dc=com
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: cn=admin,dc=example,dc=com
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW: {SSHA}30rluAuA7EtLs5TBEANFRWPWK1fGD+TI
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+add: olcAccess
+olcAccess: {0}to attrs=userPassword,shadowLastChange
+   by dn="cn=alvin,dc=alvin,dc=com" write
+   by anonymous auth
+   by self write
+   by * none
+olcAccess: {1}to dn.base="" by * read
+olcAccess: {2}to *
+   by dn="cn=alvin,dc=alvin,dc=com" write
+   by * read
+
+
+
+
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcSuffix
+olcSuffix: dc=alvin,dc=com
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: cn=admin,dc=alvin,dc=com
+
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW: {SSHA}30rluAuA7EtLs5TBEANFRWPWK1fGD+TI
+
+
+
+dn: dc=alvin,dc=com
+objectClass: top
+objectClass: dcObject
+objectclass: organization
+o: alvin com
+dc: alvin
+
+dn: cn=Manager,dc=alvin,dc=com
+objectClass: organizationalRole
+cn: Manager
+description: Directory Manager
+
+dn: ou=People,dc=alvin,dc=com
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Group,dc=alvin,dc=com
+objectClass: organizationalUnit
+ou: Group
+
+
+ldapsearch -x -H ldap://127.0.0.1 -b "dc=alvin,dc=com"
+
+
+ldapsearch -x -H ldap://127.0.0.1 -b "dc=alvin,dc=com" uid=alvin -ZZ
