@@ -180,6 +180,66 @@ dn: ou=Group,dc=alvin,dc=com(群組項目)
 
 
 
+dc=alvin,dc=com  -----------  cn=Manager,dc=alvin,dc=com
+                 |
+       -------------------------
+       |                       |
+   ou=People,dc=alvin,dc=com   ou=Group,dc=alvin,dc=com
+
+
+
+vim base.ldif
+
+dn: dc=alvin,dc=com
+objectClass: top
+objectClass: dcObject
+objectclass: organization
+o: alvin com
+dc: alvin
+
+dn: cn=Manager,dc=alvin,dc=com
+objectClass: organizationalRole
+cn: Manager
+description: Directory Manager
+
+dn: ou=People,dc=alvin,dc=com
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Group,dc=alvin,dc=com
+objectClass: organizationalUnit
+ou: Group
+
+
+ldapadd -x -W -D "cn=Manager,dc=alvin,dc=com" -f base.ldif
+
+wget http://mirror.centos.org/centos/7/os/x86_64/Packages/migrationtools-47-15.el7.noarch.rpm
+
+yum install ./migrationtools-47-15.el7.noarch.rpm
+
+mkdir /home/rhome
+
+useradd -d /home/rhome/ldapuser1 -u 6001 ldapuser1
+
+echo "mypassword123" | passwd --stdin ldapuser1
+
+id ldapuser1
+
+ll /home/rhome
+
+vim /usr/share/migrationtools/migrate_common.ph
+
+grep ldapuser /etc/passwd > user.txt
+
+grep ldapuser /etc/group > group.txt
+
+/usr/share/migrationtools/migrate_passwd.pl user.txt > user.ldif
+
+/usr/share/migrationtools/migrate_group.pl group.txt > group.ldif
+
+cat user.ldif
+
+
 
 
 
