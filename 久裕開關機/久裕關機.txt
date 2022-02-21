@@ -54,5 +54,5 @@ UI 網頁左上角 動作 關閉系統電源
 
 lssyscfg -r sys -F name,state
 
-chsysstate -m P520-9131-52A-SN06E2FFG -r sys -o on
+chsysstate -m P520-9131-52A-SN06E2FFG -r sys -o off
 
