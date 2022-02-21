@@ -56,3 +56,7 @@ lssyscfg -r sys -F name,state
 
 chsysstate -m P520-9131-52A-SN06E2FFG -r sys -o on
 
+
+
+chsysstate -m Server-9117-570-SN6599FFD -r sys -o off
+
