@@ -1,0 +1,10 @@
+1.停下資料庫服務，並確認 00:05
+2.unity上將10個lun執行snapshot 00:10
+3.將VG下的filesystem umount 00:05
+4.確認目前所有磁碟剩餘的PP數lspv -M hdiskpowerX 00:05  
+5.將hdiskpower2-9 11，兩個pp移到hdiskpower12 00:10  
+6.將VG轉為BIG VG 00:10
+7.確認目前VG，MAX LV 00:01
+8.mount filesystem 00:05
+9.開啟資料庫服務，服務測試 00:05
+10.觀察一小時後，移除unity上的snapshot 
