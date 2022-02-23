@@ -7,4 +7,12 @@
 7.確認目前VG，MAX LV 00:01
 8.mount filesystem 00:05
 9.開啟資料庫服務，服務測試 00:05
-10.觀察一小時後，移除unity上的snapshot 
+10.查看nmon cpu的wait  與Disk Busy 
+11.做VG擴充與mirror
+12.查看nmon cpu的wait  與Disk Busy
+13.檢查vg  prod_oldlv      loglv00   Mirror情況
+
+
+
+
+10.觀察一小時後，移除unity上的snapshot  
