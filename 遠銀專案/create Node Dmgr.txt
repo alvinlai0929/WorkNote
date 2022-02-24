@@ -4,7 +4,13 @@ adminPassword wasadmin -cellName DmgrCell -hostName alvin -nodeName Dmgr
 
 cd /usr/IBM/WebSphere/AppServer/bin \
 
-manageprofiles.bat -create -profileName Node1 -profilePath "D:\Program Files\IBM\WebSphere\AppServer\profiles\Node1" -templatePath "D:\Program Files\IBM\WebSphere\AppServer\profileTemplates\managed" -cellName alvin1Cell01 -hostName alvin -nodeName Node1
+manageprofiles.bat -create \
+-profileName Node1 \
+-profilePath "D:\Program Files\IBM\WebSphere\AppServer\profiles\Node1" \
+-templatePath "D:\Program Files\IBM\WebSphere\AppServer\profileTemplates\managed" \
+-cellName alvin1Cell01 \
+-hostName alvin \
+-nodeName Node1
 
 
 addNode alvin 8879 -conntype soap -profileName Node1 -username wasadmin -password wasadmin 
