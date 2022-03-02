@@ -32,11 +32,30 @@ manageprofiles.sh -delete \
 -hostName alvin \
 -nodeName Node1
 
-./manageprofiles.sh -create -profileName Dmgr 
--profilePath /usr/IBM/WebSphere/AppServer/profiles/Dmgr  
+./manageprofiles.sh -create -profileName AppSrv01 \
+-enableAdminSecurity true \
+-adminUserName wasadmin \
+-adminPassword wasadmin 
+
+
+
+-profilePath   
 -templatePath /usr/IBM/WebSphere/AppServer/profileTemplates/dmgr 
 -enableAdminSecurity true
 -isDefault -adminUserName wasadmin -adminPassword wasadmin 
 -cellName DmgrCell 
 -hostName WAS1 
 -nodeName Dmgr
+
+
+
+./manageprofiles.sh -delete \
+-profileName AppSrv01 \
+
+
+
+-profilePath "" \
+-templatePath "D:\Program Files\IBM\WebSphere\AppServer\profileTemplates\managed" \
+-cellName alvin1Cell01 \
+-hostName alvin \
+-nodeName Node1
