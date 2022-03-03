@@ -38,14 +38,15 @@ manageprofiles.sh -delete \
 -adminPassword wasadmin 
 
 
-
--profilePath   
--templatePath /usr/IBM/WebSphere/AppServer/profileTemplates/dmgr 
--enableAdminSecurity true
--isDefault -adminUserName wasadmin -adminPassword wasadmin 
--cellName DmgrCell 
--hostName WAS1 
--nodeName Dmgr
+manageprofiles.bat \
+-profilePath   \
+-templatePath /usr/IBM/WebSphere/AppServer/profileTemplates/dmgr \
+-enableAdminSecurity true \
+-isDefault \
+-adminUserName wasadmin -adminPassword wasadmin \
+-cellName DmgrCell \
+-hostName WAS1 \
+-nodeName Dmgr \
 
 
 
